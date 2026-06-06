@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月薪喵 - Salary Cat</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    overflow: hidden;
+  }
+  .cat-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  .cat-container img {
+    max-width: 80vmin;
+    max-height: 80vmin;
+    image-rendering: pixelated;
+  }
+  .footer {
+    color: #555;
+    font-size: 1.2rem;
+    padding: 1.5rem;
+    letter-spacing: 0.3em;
+    user-select: none;
+  }
+  .start-btn {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.5s;
+  }
+  .start-btn.hidden { opacity: 0; pointer-events: none; }
+  .start-btn span {
+    color: #eee;
+    font-size: 1.5rem;
+    border: 2px solid #eee;
+    padding: 0.8rem 2.5rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .start-btn:hover span { background: rgba(255,255,255,0.1); }
+  .start-btn .hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    border: none;
+    padding: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="start-btn" id="startBtn" onclick="start()">
+  <span>🐱 点击开始</span>
+  <span class="hint">点击任意位置开始动画与音乐</span>
+</div>
+
+<div class="cat-container">
+  <img src="cat.GIF" alt="Salary Cat">
+</div>
+<div class="footer">我真的特别爱你</div>
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<script>
+function start() {
+  document.getElementById('startBtn').classList.add('hidden');
+  document.getElementById('bgm').play().catch(() => {});
+}
+</script>
+</body>
+</html>
